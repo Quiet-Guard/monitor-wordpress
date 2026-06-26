@@ -1,0 +1,17 @@
+{
+    "name": "laboiteacode/monitor-wordpress",
+    "description": "WordPress plugin to report PHP errors, exceptions and logs to a LaravelMonitor server.",
+    "type": "wordpress-plugin",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "laboiteacode/monitor-php": "^0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "LaBoiteACode\\Monitor\\WordPress\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
