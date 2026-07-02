@@ -11,7 +11,7 @@ LaravelMonitor centralises errors and logs from your sites. This plugin captures
 PHP exceptions, errors and fatal shutdowns and forwards them to your LaravelMonitor
 server over HTTPS, using the per-project API key.
 
-Built on the framework-agnostic core `laboiteacode/monitor-php` — the same engine
+Built on the framework-agnostic core `laboiteacode/monitor-php`, the same engine
 that powers the Laravel and Symfony clients.
 
 == Installation ==
