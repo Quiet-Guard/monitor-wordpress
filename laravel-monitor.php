@@ -2,11 +2,16 @@
 
 /**
  * Plugin Name:       LaravelMonitor
+ * Plugin URI:        https://github.com/La-boite-a-code/LaravelMonitor
  * Description:       Report PHP errors, exceptions and logs from WordPress to a LaravelMonitor server.
  * Version:           0.1.0
+ * Requires at least: 6.0
  * Requires PHP:      8.2
- * Author:            la-boite-a-code
+ * Author:            La boite a code
+ * Author URI:        https://github.com/La-boite-a-code
  * License:           MIT
+ * License URI:       https://opensource.org/licenses/MIT
+ * Text Domain:       laravel-monitor
  */
 
 // Prevent direct access (WordPress entrypoint).

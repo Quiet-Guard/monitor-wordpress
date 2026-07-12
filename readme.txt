@@ -1,7 +1,11 @@
 === LaravelMonitor ===
 Contributors: laboiteacode
+Requires at least: 6.0
+Tested up to: 6.8
 Requires PHP: 8.2
+Stable tag: 0.1.0
 License: MIT
+License URI: https://opensource.org/licenses/MIT
 
 Report PHP errors, exceptions and logs from WordPress to a LaravelMonitor server.
 
@@ -24,6 +28,8 @@ that powers the Laravel and Symfony clients.
 == Notes ==
 
 * Capture is additive: WordPress' own error handling still runs.
+* The admin screen strings are currently English only. The plugin declares the
+  `laravel-monitor` text domain; full translation support is planned.
 * Encrypted storage of the captured content is enforced server-side per team.
 * Dependency/vulnerability scanning for WordPress core, plugins and themes is on
   the roadmap (a WordPress-specific advisory source on the server, distinct from
