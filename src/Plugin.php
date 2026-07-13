@@ -2,6 +2,11 @@
 
 namespace LaBoiteACode\Monitor\WordPress;
 
+// Direct access guard (loaded inside WordPress only).
+if (! defined('ABSPATH') && php_sapi_name() !== 'cli') {
+    exit;
+}
+
 use LaBoiteACode\Monitor\Config;
 use LaBoiteACode\Monitor\ErrorHandler;
 use LaBoiteACode\Monitor\Http\CurlHttpClient;
@@ -39,7 +44,8 @@ class Plugin
      */
     public static function makeReporter(array $options, ?HttpClient $http = null): Reporter
     {
-        $traceLimit = (int) ($options['trace_limit'] ?? 50);
+        // 0 = full stack trace, the default across the whole client family.
+        $traceLimit = (int) ($options['trace_limit'] ?? 0);
         $release = $options['release'] ?? null;
 
         $config = new Config(

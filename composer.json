@@ -1,6 +1,6 @@
 {
     "name": "laboiteacode/monitor-wordpress",
-    "description": "WordPress plugin to report PHP errors, exceptions and logs to a LaravelMonitor server.",
+    "description": "WordPress plugin to report PHP errors, exceptions and fatal shutdowns to a LaravelMonitor server.",
     "type": "wordpress-plugin",
     "license": "MIT",
     "keywords": [

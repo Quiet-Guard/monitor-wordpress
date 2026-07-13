@@ -2,6 +2,11 @@
 
 namespace LaBoiteACode\Monitor\WordPress;
 
+// Direct access guard (loaded inside WordPress only).
+if (! defined('ABSPATH') && php_sapi_name() !== 'cli') {
+    exit;
+}
+
 /**
  * The wp-admin settings screen (Settings → LaravelMonitor). All methods run only
  * inside WordPress; they are never exercised outside it.
@@ -50,12 +55,20 @@ class Settings
     {
         $input = is_array($input) ? $input : [];
 
+        // register_setting() routes EVERY update_option() through this method,
+        // including programmatic writes: the advanced keys the settings screen
+        // does not expose (timeout, trace_limit) must survive a save.
+        $stored = get_option(Plugin::OPTION, []);
+        $stored = is_array($stored) ? $stored : [];
+
         return [
             'enabled' => ! empty($input['enabled']) ? 1 : 0,
             'url' => esc_url_raw(trim((string) ($input['url'] ?? ''))),
             'key' => sanitize_text_field((string) ($input['key'] ?? '')),
             'environments' => sanitize_text_field((string) ($input['environments'] ?? '')),
             'release' => sanitize_text_field((string) ($input['release'] ?? '')),
+            'timeout' => max(1, (int) ($input['timeout'] ?? $stored['timeout'] ?? 3)),
+            'trace_limit' => max(0, (int) ($input['trace_limit'] ?? $stored['trace_limit'] ?? 0)),
         ];
     }
 
