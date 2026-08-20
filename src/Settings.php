@@ -8,7 +8,7 @@ if (! defined('ABSPATH') && php_sapi_name() !== 'cli') {
 }
 
 /**
- * The wp-admin settings screen (Settings → LaravelMonitor). All methods run only
+ * The wp-admin settings screen (Settings → Quiet Guard). All methods run only
  * inside WordPress; they are never exercised outside it.
  */
 class Settings
@@ -22,8 +22,8 @@ class Settings
     public function menu(): void
     {
         add_options_page(
-            'LaravelMonitor',
-            'LaravelMonitor',
+            'Quiet Guard',
+            'Quiet Guard',
             'manage_options',
             'laravel-monitor',
             [$this, 'render'],
@@ -85,7 +85,7 @@ class Settings
             return;
         }
 
-        echo '<div class="wrap"><h1>LaravelMonitor</h1><form method="post" action="options.php">';
+        echo '<div class="wrap"><h1>Quiet Guard</h1><form method="post" action="options.php">';
         settings_fields('laravel_monitor');
         do_settings_sections('laravel-monitor');
         submit_button();

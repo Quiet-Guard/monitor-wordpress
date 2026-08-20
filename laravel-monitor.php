@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Plugin Name:       LaravelMonitor
- * Plugin URI:        https://github.com/La-boite-a-code/LaravelMonitor
- * Description:       Report PHP errors, exceptions and fatal shutdowns from WordPress to a LaravelMonitor server.
+ * Plugin Name:       Quiet Guard
+ * Plugin URI:        https://github.com/La-boite-a-code/Quiet Guard
+ * Description:       Report PHP errors, exceptions and fatal shutdowns from WordPress to a Quiet Guard server.
  * Version:           0.1.0
  * Requires at least: 6.0
  * Requires PHP:      8.2
@@ -33,7 +33,7 @@ if (class_exists('LaBoiteACode\\Monitor\\WordPress\\Plugin')) {
 } else {
     add_action('admin_notices', static function (): void {
         echo '<div class="notice notice-error"><p>'
-            .'LaravelMonitor is missing its dependencies and captures nothing. '
+            .'Quiet Guard is missing its dependencies and captures nothing. '
             .'Run <code>composer install</code> inside the plugin directory, then re-upload it (see readme.txt).'
             .'</p></div>';
     });

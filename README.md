@@ -1,7 +1,7 @@
-# LaravelMonitor: WordPress plugin
+# Quiet Guard: WordPress plugin
 
 Report PHP errors, exceptions and fatal shutdowns from a WordPress site to your
-[LaravelMonitor](https://github.com/La-boite-a-code/LaravelMonitor) server.
+[Quiet Guard](https://github.com/La-boite-a-code/Quiet Guard) server.
 Built on the framework-agnostic core `laboiteacode/monitor-php`, the same
 engine that powers the Laravel SDK and the Symfony bundle.
 
@@ -30,10 +30,10 @@ activates safely: the plugin captures nothing and shows an admin notice.
 
 ## Configuration
 
-Go to **Settings → LaravelMonitor** and fill in:
+Go to **Settings → Quiet Guard** and fill in:
 
 - **Enabled**: master switch (1/0).
-- **Server URL**: the base URL of your LaravelMonitor server.
+- **Server URL**: the base URL of your Quiet Guard server.
 - **Project key**: the per-project API key generated in the dashboard (shown
   only once at creation).
 - **Environments** and **Release**: optional metadata attached to reports.
@@ -57,7 +57,7 @@ are on the roadmap and not part of this plugin yet.
 
 ## Documentation
 
-Full documentation is served by your LaravelMonitor server under `/docs`
+Full documentation is served by your Quiet Guard server under `/docs`
 (for example `https://monitor.example.com/docs`), including a dedicated
 section for this plugin.
 
