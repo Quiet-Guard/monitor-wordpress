@@ -2,13 +2,13 @@
 
 /**
  * Plugin Name:       Quiet Guard
- * Plugin URI:        https://github.com/La-boite-a-code/Quiet Guard
+ * Plugin URI:        https://github.com/Quiet-Guard/monitor-wordpress
  * Description:       Report PHP errors, exceptions and fatal shutdowns from WordPress to a Quiet Guard server.
  * Version:           0.1.0
  * Requires at least: 6.0
  * Requires PHP:      8.2
  * Author:            La boite a code
- * Author URI:        https://github.com/La-boite-a-code
+ * Author URI:        https://github.com/Quiet-Guard
  * License:           MIT
  * License URI:       https://opensource.org/licenses/MIT
  * Text Domain:       laravel-monitor

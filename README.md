@@ -1,7 +1,7 @@
 # Quiet Guard: WordPress plugin
 
 Report PHP errors, exceptions and fatal shutdowns from a WordPress site to your
-[Quiet Guard](https://github.com/La-boite-a-code/Quiet Guard) server.
+[Quiet Guard](https://github.com/Quiet-Guard/monitor-wordpress) server.
 Built on the framework-agnostic core `laboiteacode/monitor-php`, the same
 engine that powers the Laravel SDK and the Symfony bundle.
 
