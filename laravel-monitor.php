@@ -7,8 +7,8 @@
  * Version:           0.1.0
  * Requires at least: 6.0
  * Requires PHP:      8.2
- * Author:            La boite a code
- * Author URI:        https://github.com/Quiet-Guard
+ * Author:            Alexandre Ribes
+ * Author URI:        https://laboiteacode.fr
  * License:           MIT
  * License URI:       https://opensource.org/licenses/MIT
  * Text Domain:       laravel-monitor
