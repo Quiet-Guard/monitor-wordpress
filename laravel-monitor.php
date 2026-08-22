@@ -4,7 +4,7 @@
  * Plugin Name:       Quiet Guard
  * Plugin URI:        https://github.com/Quiet-Guard/monitor-wordpress
  * Description:       Report PHP errors, exceptions and fatal shutdowns from WordPress to a Quiet Guard server.
- * Version:           0.1.0
+ * Version:           0.1.1
  * Requires at least: 6.0
  * Requires PHP:      8.2
  * Author:            Alexandre Ribes
