@@ -1,7 +1,7 @@
 # Quiet Guard: WordPress plugin
 
 Report PHP errors, exceptions and fatal shutdowns from a WordPress site to your
-[Quiet Guard](https://github.com/Quiet-Guard/monitor-wordpress) server.
+Quiet Guard server.
 Built on the framework-agnostic core `laboiteacode/monitor-php`, the same
 engine that powers the Laravel SDK and the Symfony bundle.
 
@@ -16,10 +16,13 @@ the developer view.
 ## Build and install
 
 The plugin vendors the monitor core through Composer, so it must be built
-before it is uploaded. From a clone of the monorepo:
+before it is uploaded. Clone this repository INTO a folder named
+`laravel-monitor`: WordPress takes the plugin's slug from its folder, and the
+zip has to carry that name.
 
 ```bash
-cd clients/wordpress/laravel-monitor
+git clone https://github.com/Quiet-Guard/monitor-wordpress laravel-monitor
+cd laravel-monitor
 composer install --no-dev
 cd .. && zip -r laravel-monitor.zip laravel-monitor
 ```
