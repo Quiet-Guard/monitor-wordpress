@@ -8,7 +8,7 @@
  * Requires at least: 6.0
  * Requires PHP:      8.2
  * Author:            Alexandre Ribes
- * Author URI:        https://laboiteacode.fr
+ * Author URI:        https://quietguard.dev
  * License:           MIT
  * License URI:       https://opensource.org/licenses/MIT
  * Text Domain:       laravel-monitor
@@ -27,9 +27,9 @@ if (is_file($monitorAutoload)) {
 
 // An unbuilt plugin folder (no vendor/) must degrade to an admin notice, never
 // fatal the site: the boot callback would crash on the missing classes.
-if (class_exists('LaBoiteACode\\Monitor\\WordPress\\Plugin')) {
+if (class_exists('QuietGuard\\Monitor\\WordPress\\Plugin')) {
     // Boot once WordPress and plugins are loaded.
-    add_action('plugins_loaded', ['LaBoiteACode\\Monitor\\WordPress\\Plugin', 'boot']);
+    add_action('plugins_loaded', ['QuietGuard\\Monitor\\WordPress\\Plugin', 'boot']);
 } else {
     add_action('admin_notices', static function (): void {
         echo '<div class="notice notice-error"><p>'

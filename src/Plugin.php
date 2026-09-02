@@ -1,19 +1,19 @@
 <?php
 
-namespace LaBoiteACode\Monitor\WordPress;
+namespace QuietGuard\Monitor\WordPress;
 
 // Direct access guard (loaded inside WordPress only).
 if (! defined('ABSPATH') && php_sapi_name() !== 'cli') {
     exit;
 }
 
-use LaBoiteACode\Monitor\Config;
-use LaBoiteACode\Monitor\ErrorHandler;
-use LaBoiteACode\Monitor\Http\CurlHttpClient;
-use LaBoiteACode\Monitor\Http\HttpClient;
-use LaBoiteACode\Monitor\Payload\ExceptionPayloadBuilder;
-use LaBoiteACode\Monitor\Reporter;
-use LaBoiteACode\Monitor\Support\Scrubber;
+use QuietGuard\Monitor\Config;
+use QuietGuard\Monitor\ErrorHandler;
+use QuietGuard\Monitor\Http\CurlHttpClient;
+use QuietGuard\Monitor\Http\HttpClient;
+use QuietGuard\Monitor\Payload\ExceptionPayloadBuilder;
+use QuietGuard\Monitor\Reporter;
+use QuietGuard\Monitor\Support\Scrubber;
 
 /**
  * WordPress adapter for the framework-agnostic monitor core. Registers global

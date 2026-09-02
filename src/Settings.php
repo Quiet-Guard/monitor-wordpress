@@ -1,6 +1,6 @@
 <?php
 
-namespace LaBoiteACode\Monitor\WordPress;
+namespace QuietGuard\Monitor\WordPress;
 
 // Direct access guard (loaded inside WordPress only).
 if (! defined('ABSPATH') && php_sapi_name() !== 'cli') {
