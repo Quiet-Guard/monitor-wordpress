@@ -23,6 +23,7 @@ zip has to carry that name.
 ```bash
 git clone https://github.com/Quiet-Guard/monitor-wordpress laravel-monitor
 cd laravel-monitor
+composer config repositories.monitor-php vcs https://github.com/Quiet-Guard/monitor-php
 composer install --no-dev
 cd .. && zip -r laravel-monitor.zip laravel-monitor
 ```
