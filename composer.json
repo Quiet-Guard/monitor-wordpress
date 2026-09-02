@@ -1,5 +1,5 @@
 {
-    "name": "laboiteacode/monitor-wordpress",
+    "name": "quiet-guard/monitor-wordpress",
     "description": "WordPress plugin to report PHP errors, exceptions and fatal shutdowns to a Quiet Guard server.",
     "type": "wordpress-plugin",
     "license": "MIT",
@@ -24,19 +24,13 @@
     },
     "require": {
         "php": "^8.2",
-        "laboiteacode/monitor-php": "^0.1"
+        "quiet-guard/monitor-php": "^0.2"
     },
     "autoload": {
         "psr-4": {
             "LaBoiteACode\\Monitor\\WordPress\\": "src/"
         }
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/Quiet-Guard/monitor-php"
-        }
-    ],
     "minimum-stability": "stable",
     "prefer-stable": true
 }

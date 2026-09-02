@@ -16,7 +16,7 @@ Quiet Guard centralises errors from your sites. This plugin captures
 PHP exceptions, errors and fatal shutdowns and forwards them to your Quiet Guard
 server over HTTPS, using the per-project API key.
 
-Built on the framework-agnostic core `laboiteacode/monitor-php`, the same engine
+Built on the framework-agnostic core `quiet-guard/monitor-php`, the same engine
 that powers the Laravel and Symfony clients.
 
 == Installation ==

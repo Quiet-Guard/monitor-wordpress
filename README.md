@@ -2,7 +2,7 @@
 
 Report PHP errors, exceptions and fatal shutdowns from a WordPress site to your
 Quiet Guard server.
-Built on the framework-agnostic core `laboiteacode/monitor-php`, the same
+Built on the framework-agnostic core `quiet-guard/monitor-php`, the same
 engine that powers the Laravel SDK and the Symfony bundle.
 
 The WordPress.org distribution file is [readme.txt](readme.txt); this page is
