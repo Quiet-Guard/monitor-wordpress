@@ -78,6 +78,6 @@ class Plugin
      */
     private static function scrubKeys(): array
     {
-        return ['password', 'pwd', 'token', 'secret', 'authorization', 'cookie', 'auth', 'api_key', 'nonce'];
+        return ['password', 'pwd', 'passphrase', 'token', 'secret', 'authorization', 'cookie', 'auth', 'api_key', 'nonce'];
     }
 }
