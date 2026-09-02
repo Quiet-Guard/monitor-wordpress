@@ -4,7 +4,7 @@ Tags: monitoring, errors, exceptions, error-tracking
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 8.2
-Stable tag: 0.1.0
+Stable tag: 0.2.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
