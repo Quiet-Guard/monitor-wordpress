@@ -62,6 +62,7 @@ class Plugin
             $http ?? new CurlHttpClient,
             new Scrubber(self::scrubKeys()),
             new ExceptionPayloadBuilder($traceLimit, $release),
+            new ErrorLogLogger,
         );
     }
 
