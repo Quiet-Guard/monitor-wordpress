@@ -36,7 +36,8 @@ activates safely: the plugin captures nothing and shows an admin notice.
 Go to **Settings → Quiet Guard** and fill in:
 
 - **Enabled**: master switch (1/0).
-- **Server URL**: the base URL of your Quiet Guard server.
+- **Server URL**: the base URL of your Quiet Guard server. A value that already
+  ends in `/api` or `/api/v1` is accepted and normalised.
 - **Project key**: the per-project API key generated in the dashboard (shown
   only once at creation).
 - **Environments** and **Release**: optional metadata attached to reports.
@@ -48,12 +49,19 @@ full stack trace, like every client in the family), are read from the same
 
 ## What it captures
 
-- Uncaught PHP exceptions, PHP errors at the configured `error_reporting`
-  level, and fatal shutdowns.
+- Uncaught PHP exceptions, PHP errors at `E_USER_ERROR` or `E_RECOVERABLE_ERROR`
+  (within the configured `error_reporting` level), and fatal shutdowns. Warnings
+  and notices are not reported: every severity used to be forwarded as one
+  synchronous POST each, which turns a warning inside a loop into hundreds of
+  blocking calls on a page load. The same error on the same `file:line` is
+  reported once per request, twenty errors per request at most.
 - Capture is additive: WordPress' own error handling still runs, and reporting
   failures never break the site.
 - Context values are scrubbed by key (passwords, tokens, cookies...) before
   anything leaves the site, and stack-trace frame arguments are never sent.
+- The plugin writes its own diagnostics with `error_log()`, so a wrong key, a
+  wrong address or a refused payload leaves a `[Quiet Guard]` line in
+  `wp-content/debug.log` wherever `WP_DEBUG_LOG` is on.
 
 Application log forwarding and dependency/vulnerability scanning for WordPress
 are on the roadmap and not part of this plugin yet.
