@@ -31,7 +31,9 @@ class Plugin
             (new Settings)->register();
         }
 
-        if (! empty($options['enabled']) && ! empty($options['url']) && ! empty($options['key'])) {
+        // Pas d'adresse dans la condition : Config la remplit avec le service
+        // hébergé. La clé est la seule chose qu'on ne peut pas deviner.
+        if (! empty($options['enabled']) && ! empty($options['key'])) {
             ErrorHandler::register(self::makeReporter($options));
         }
     }
