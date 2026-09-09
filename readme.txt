@@ -48,6 +48,11 @@ captures nothing and shows an admin notice asking for the missing build step.
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: the server URL is optional. The bundled core resolves an empty address
+  to the hosted service, so a site only has to paste its project key.
+
 = 0.2.1 =
 * Fixed: a wrong key, a wrong server address or a refused report now writes a
   `[Quiet Guard]` line to the PHP error log, which is `wp-content/debug.log`
