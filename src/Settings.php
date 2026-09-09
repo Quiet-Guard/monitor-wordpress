@@ -38,7 +38,7 @@ class Settings
 
         foreach ([
             'enabled' => 'Enabled (1/0)',
-            'url' => 'Server URL',
+            'url' => 'Server URL (optional, defaults to the hosted service)',
             'key' => 'Project key',
             'environments' => 'Environments (comma-separated, empty = all)',
             'release' => 'Release (optional)',

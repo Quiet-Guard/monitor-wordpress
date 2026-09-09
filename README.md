@@ -36,7 +36,9 @@ activates safely: the plugin captures nothing and shows an admin notice.
 Go to **Settings → Quiet Guard** and fill in:
 
 - **Enabled**: master switch (1/0).
-- **Server URL**: the base URL of your Quiet Guard server. A value that already
+- **Server URL**: optional, and empty means the hosted service at
+  https://quietguard.dev, so a site on it only has to paste its key. Fill it to
+  reach a self-hosted instance. A value that already
   ends in `/api` or `/api/v1` is accepted and normalised.
 - **Project key**: the per-project API key generated in the dashboard (shown
   only once at creation).

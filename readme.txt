@@ -4,7 +4,7 @@ Tags: monitoring, errors, exceptions, error-tracking
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 8.2
-Stable tag: 0.2.1
+Stable tag: 0.2.2
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -48,7 +48,7 @@ captures nothing and shows an admin notice asking for the missing build step.
 
 == Changelog ==
 
-= Unreleased =
+= 0.2.2 =
 
 * Fixed: the server URL is optional. The bundled core resolves an empty address
   to the hosted service, so a site only has to paste its project key.
