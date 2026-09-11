@@ -4,7 +4,7 @@ Tags: monitoring, errors, exceptions, error-tracking
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 8.2
-Stable tag: 0.2.2
+Stable tag: 0.3.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -47,6 +47,18 @@ captures nothing and shows an admin notice asking for the missing build step.
   the Packagist source used for Composer-based apps).
 
 == Changelog ==
+
+= 0.3.0 =
+
+* Added: stack traces start at the **throw site**. The exception's own file and
+  line travel as frame zero, since PHP's trace starts at the caller and never
+  held the failing line. `trace_limit` counts that frame.
+* Added: application frames carry a **source snippet**, the five lines on each
+  side of the frame's line, so the dashboard shows the failing line in context.
+  WordPress core, `wp-config.php` and the dependencies never carry one, and a
+  line that names a secret and gives it a value is masked whole. The
+  `code_snippets` option key (default on) switches it off.
+* Changed: the bundled core is required as `^0.3.0`.
 
 = 0.2.2 =
 
