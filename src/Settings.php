@@ -69,6 +69,7 @@ class Settings
             'release' => sanitize_text_field((string) ($input['release'] ?? '')),
             'timeout' => max(1, (int) ($input['timeout'] ?? $stored['timeout'] ?? 3)),
             'trace_limit' => max(0, (int) ($input['trace_limit'] ?? $stored['trace_limit'] ?? 0)),
+            'code_snippets' => (bool) ($input['code_snippets'] ?? $stored['code_snippets'] ?? true),
         ];
     }
 

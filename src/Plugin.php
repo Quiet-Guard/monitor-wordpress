@@ -49,6 +49,9 @@ class Plugin
         // 0 = full stack trace, the default across the whole client family.
         $traceLimit = (int) ($options['trace_limit'] ?? 0);
         $release = $options['release'] ?? null;
+        // Source snippets around application frames, on unless the option
+        // says otherwise; the core reads the same switch.
+        $codeSnippets = (bool) ($options['code_snippets'] ?? true);
 
         $config = new Config(
             $options['url'] ?? null,
@@ -57,13 +60,14 @@ class Plugin
             $release,
             self::environments($options['environments'] ?? ''),
             $traceLimit,
+            codeSnippets: $codeSnippets,
         );
 
         return new Reporter(
             $config,
             $http ?? new CurlHttpClient,
             new Scrubber(self::scrubKeys()),
-            new ExceptionPayloadBuilder($traceLimit, $release),
+            new ExceptionPayloadBuilder($traceLimit, $release, $codeSnippets),
             new ErrorLogLogger,
         );
     }
@@ -81,6 +85,6 @@ class Plugin
      */
     private static function scrubKeys(): array
     {
-        return ['password', 'pwd', 'passphrase', 'token', 'secret', 'authorization', 'cookie', 'referer', 'referrer', 'auth', 'api_key', 'nonce'];
+        return ['password', 'pwd', 'passphrase', 'token', 'secret', 'authorization', 'cookie', 'referer', 'referrer', 'auth', 'api_key', 'nonce', 'salt', 'logged_in', 'db_'];
     }
 }
