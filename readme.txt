@@ -53,8 +53,13 @@ captures nothing and shows an admin notice asking for the missing build step.
 * Added: `signature` joins the masked names, as in the other clients. A value
   under that name, or a source line that gives it a value, is masked.
 * Fixed: a name written with hyphens is masked like its underscore spelling
-  (`api_key` masks `x-api-key`), and a source line tries each masked name in
-  both spellings.
+  (`api_key` masks `x-api-key`), and a source line tries a masked name in its
+  other spelling when a hyphen or an underscore sits inside it. `db_`, which
+  ends with one, keeps its own, so a line such as `'db-new'` stays readable.
+* Fixed: a source line that gives a value to an array index named in quotes,
+  such as `$config['password'] = '...'`, is masked whole, and so is a
+  comparison with one. The `']` between the name and the `=` let such lines
+  travel in clear.
 * Fixed: a source line that calls a static method, such as `Auth::check()`, is
   no longer masked whole. The first colon of `::` was read as the start of a
   value, so such lines were hidden, the line of the error included.
