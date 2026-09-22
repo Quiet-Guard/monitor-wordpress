@@ -31,8 +31,8 @@ class Plugin
             (new Settings)->register();
         }
 
-        // Pas d'adresse dans la condition : Config la remplit avec le service
-        // hébergé. La clé est la seule chose qu'on ne peut pas deviner.
+        // No address in the condition: Config fills it in with the hosted
+        // service. The key is the one thing that cannot be guessed.
         if (! empty($options['enabled']) && ! empty($options['key'])) {
             ErrorHandler::register(self::makeReporter($options));
         }
