@@ -48,6 +48,17 @@ captures nothing and shows an admin notice asking for the missing build step.
 
 == Changelog ==
 
+= 0.3.1 =
+
+* Added: `signature` joins the masked names, as in the other clients. A value
+  under that name, or a source line that gives it a value, is masked.
+* Fixed: a name written with hyphens is masked like its underscore spelling
+  (`api_key` masks `x-api-key`), and a source line tries each masked name in
+  both spellings.
+* Fixed: a source line that calls a static method, such as `Auth::check()`, is
+  no longer masked whole. The first colon of `::` was read as the start of a
+  value, so such lines were hidden, the line of the error included.
+
 = 0.3.0 =
 
 * Added: stack traces start at the **throw site**. The exception's own file and
