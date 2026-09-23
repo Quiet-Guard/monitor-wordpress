@@ -4,7 +4,7 @@ Tags: monitoring, errors, exceptions, error-tracking
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 8.2
-Stable tag: 0.3.0
+Stable tag: 0.3.1
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -63,6 +63,7 @@ captures nothing and shows an admin notice asking for the missing build step.
 * Fixed: a source line that calls a static method, such as `Auth::check()`, is
   no longer masked whole. The first colon of `::` was read as the start of a
   value, so such lines were hidden, the line of the error included.
+* Changed: the bundled core is required as `^0.3.1`.
 
 = 0.3.0 =
 
