@@ -4,7 +4,7 @@ Tags: monitoring, errors, exceptions, error-tracking
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 8.2
-Stable tag: 0.3.1
+Stable tag: 0.4.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -47,6 +47,12 @@ captures nothing and shows an admin notice asking for the missing build step.
   the Packagist source used for Composer-based apps).
 
 == Changelog ==
+
+= 0.4.0 =
+
+* Changed: the bundled core is required as `^0.4.0`. Nothing else changes in
+  the plugin: this release follows the Laravel SDK's automatic heartbeats, and
+  the core carries no change of its own.
 
 = 0.3.1 =
 
