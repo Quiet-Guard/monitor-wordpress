@@ -48,6 +48,17 @@ captures nothing and shows an admin notice asking for the missing build step.
 
 == Changelog ==
 
+= 0.6.0 (unreleased) =
+
+* Security: credentials are masked by their shape wherever they sit, through
+  the bundled core (Stripe, AWS, GitHub, GitLab and Slack keys, JWTs, private
+  key blocks, a Quiet Guard project key, the password of a `user:password@host`
+  in an address); a code snippet line that hands a literal to `new PDO(...)`,
+  `mysqli_connect(...)` or another call whose arguments are credentials is
+  masked whole; a field the engine could not read is withheld as
+  `[redacted:unscannable]` rather than sent as it came.
+* Changed: the bundled core is required as `^0.6.0`.
+
 = 0.5.0 =
 
 * Changed: the bundled core is required as `^0.5.0`. Nothing else changes in

@@ -61,6 +61,13 @@ full stack trace, like every client in the family), are read from the same
   failures never break the site.
 - Context values are scrubbed by key (passwords, tokens, cookies...) before
   anything leaves the site, and stack-trace frame arguments are never sent.
+  Values are also masked by their shape wherever they sit, message text
+  included: personal data (email, IBAN, card, French social security and phone
+  numbers) and, from version 0.6.0, credentials recognised by their prefix
+  (Stripe, AWS, GitHub, GitLab and Slack keys, JWTs, private key blocks, a
+  Quiet Guard project key, the password of a `user:password@host` in an
+  address). A field the engine could not read is withheld as
+  `[redacted:unscannable]` rather than sent as it came.
 - The plugin writes its own diagnostics with `error_log()`, so a wrong key, a
   wrong address or a refused payload leaves a `[Quiet Guard]` line in
   `wp-content/debug.log` wherever `WP_DEBUG_LOG` is on.
