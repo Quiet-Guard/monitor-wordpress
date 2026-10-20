@@ -58,6 +58,9 @@ captures nothing and shows an admin notice asking for the missing build step.
   `mysqli_connect(...)` or another call whose arguments are credentials is
   masked whole; a field the engine could not read is withheld as
   `[redacted:unscannable]` rather than sent as it came.
+* Security: a percent-encoded value (an email written `%40`, a number written
+  with `%20`) is read decoded by the bundled core, so a URL quoted in an error
+  message is masked as it would be in clear.
 * Changed: the bundled core is required as `^0.6.0`.
 
 = 0.5.0 =
