@@ -51,9 +51,10 @@ captures nothing and shows an admin notice asking for the missing build step.
 = 0.6.0 (unreleased) =
 
 * Security: credentials are masked by their shape wherever they sit, through
-  the bundled core (Stripe, AWS, GitHub, GitLab and Slack keys, JWTs, private
-  key blocks, a Quiet Guard project key, the password of a `user:password@host`
-  in an address); a code snippet line that hands a literal to `new PDO(...)`,
+  the bundled core (Stripe keys, an AWS access key id and its secret key when
+  it follows one, GitHub, GitLab and Slack tokens, JWTs, private key blocks, a
+  Quiet Guard project key, the password of a `user:password@host` in an
+  address); a code snippet line that hands a literal to `new PDO(...)`,
   `mysqli_connect(...)` or another call whose arguments are credentials is
   masked whole; a field the engine could not read is withheld as
   `[redacted:unscannable]` rather than sent as it came.
