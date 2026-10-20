@@ -4,7 +4,7 @@ Tags: monitoring, errors, exceptions, error-tracking
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 8.2
-Stable tag: 0.5.0
+Stable tag: 0.6.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -48,7 +48,7 @@ captures nothing and shows an admin notice asking for the missing build step.
 
 == Changelog ==
 
-= 0.6.0 (unreleased) =
+= 0.6.0 =
 
 * Security: credentials are masked by their shape wherever they sit, through
   the bundled core (Stripe keys, an AWS access key id and its secret key when
