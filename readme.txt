@@ -4,7 +4,7 @@ Tags: monitoring, errors, exceptions, error-tracking
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 8.2
-Stable tag: 0.7.0
+Stable tag: 0.7.1
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -47,6 +47,10 @@ captures nothing and shows an admin notice asking for the missing build step.
   the Packagist source used for Composer-based apps).
 
 == Changelog ==
+
+= 0.7.1 =
+
+* Changed: the bundled core is required as `^0.7.1`. No change of its own: released with the family. The plugin forwards no logs, so the core's log-context fix does not concern it.
 
 = 0.7.0 =
 
