@@ -48,6 +48,10 @@ captures nothing and shows an admin notice asking for the missing build step.
 
 == Changelog ==
 
+= 0.8.0 (unreleased) =
+
+* No change of its own: released with the family. The bundled core now masks presigned storage addresses.
+
 = 0.7.1 =
 
 * Changed: the bundled core is required as `^0.7.1`. No change of its own: released with the family. The plugin forwards no logs, so the core's log-context fix does not concern it.
