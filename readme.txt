@@ -4,7 +4,7 @@ Tags: monitoring, errors, exceptions, error-tracking
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 8.2
-Stable tag: 0.8.0
+Stable tag: 0.8.1
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -52,7 +52,9 @@ captures nothing and shows an admin notice asking for the missing build step.
 
 == Changelog ==
 
-= 0.8.1 (unreleased) =
+= 0.8.1 =
+
+* Changed: the bundled core is required as `^0.8.1`.
 
 * Fixed: an uncaught exception left the visitor a blank page answered HTTP 200,
   with no WordPress error page and no recovery mode email, because the plugin's
