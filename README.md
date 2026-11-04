@@ -57,8 +57,18 @@ full stack trace, like every client in the family), are read from the same
   synchronous POST each, which turns a warning inside a loop into hundreds of
   blocking calls on a page load. The same error on the same `file:line` is
   reported once per request, twenty errors per request at most.
-- Capture is additive: WordPress' own error handling still runs, and reporting
-  failures never break the site.
+- A fatal shutdown (memory exhausted, maximum execution time, a compile error)
+  is read from WordPress's own fatal error handler, through the
+  `wp_php_error_args` filter, before anything that handler raises can replace
+  it; the shutdown hook reports it when WordPress showed no error page. A crash
+  that reaches both is reported once. A `php-error.php` drop-in replaces that
+  page and the filter with it: under such a drop-in a fatal is reported only if
+  the drop-in raises no error and does not `exit`.
+- Capture is additive: WordPress' own error handling still runs. An uncaught
+  exception is handed back to PHP once reported, so WordPress still shows its
+  error page, answers HTTP 500 and starts its recovery mode (before 0.8.1 the
+  page stayed blank and answered 200). Reporting failures never break the
+  site.
 - Context values are scrubbed by key (passwords, tokens, cookies...) before
   anything leaves the site, and stack-trace frame arguments are never sent.
   Values are also masked by their shape wherever they sit, message text

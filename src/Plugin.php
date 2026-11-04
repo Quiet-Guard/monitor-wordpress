@@ -7,6 +7,7 @@ if (! defined('ABSPATH') && php_sapi_name() !== 'cli') {
     exit;
 }
 
+use ErrorException;
 use QuietGuard\Monitor\Config;
 use QuietGuard\Monitor\ErrorHandler;
 use QuietGuard\Monitor\Http\CurlHttpClient;
@@ -14,14 +15,19 @@ use QuietGuard\Monitor\Http\HttpClient;
 use QuietGuard\Monitor\Payload\ExceptionPayloadBuilder;
 use QuietGuard\Monitor\Reporter;
 use QuietGuard\Monitor\Support\Scrubber;
+use Throwable;
 
 /**
  * WordPress adapter for the framework-agnostic monitor core. Registers global
- * PHP error/exception/shutdown handlers and the wp-admin settings page.
+ * PHP error/exception/shutdown handlers, a hook into WordPress's own fatal
+ * error handler, and the wp-admin settings page.
  */
 class Plugin
 {
     public const OPTION = 'laravel_monitor_options';
+
+    /** What WordPress may hand over as a fatal and the plugin reports: never a warning or a notice. */
+    private const FATALS = E_ERROR | E_PARSE | E_CORE_ERROR | E_COMPILE_ERROR | E_USER_ERROR | E_RECOVERABLE_ERROR;
 
     public static function boot(): void
     {
@@ -34,8 +40,36 @@ class Plugin
         // No address in the condition: Config fills it in with the hosted
         // service. The key is the one thing that cannot be guessed.
         if (! empty($options['enabled']) && ! empty($options['key'])) {
-            ErrorHandler::register(self::makeReporter($options));
+            self::register(self::makeReporter($options));
         }
+    }
+
+    /**
+     * Wire a reporter into PHP and into WordPress's fatal error handler.
+     */
+    public static function register(Reporter $reporter): void
+    {
+        // Left to the core, an uncaught exception ends in an error_log line and
+        // a blank HTTP 200: no fatal for WordPress to see, so no error page and
+        // no recovery mode email. Rethrown, it becomes PHP's own fatal again.
+        // Installed only on an empty slate: an existing handler is chained.
+        if (set_exception_handler(static fn (Throwable $e) => throw $e) !== null) {
+            restore_exception_handler();
+        }
+
+        ErrorHandler::register($reporter);
+
+        // WordPress's handler runs before any plugin's shutdown function, and
+        // anything it raises on the way, even a suppressed warning, replaces
+        // the fatal in error_get_last(). Its filter carries the error it read
+        // first. Returning $args untouched keeps its error page as it is.
+        add_filter('wp_php_error_args', static function (array $args, array $error) use ($reporter): array {
+            if (($error['type'] ?? 0) & self::FATALS) {
+                $reporter->reportException(new ErrorException($error['message'], 0, $error['type'], $error['file'], $error['line']));
+            }
+
+            return $args;
+        }, 10, 2);
     }
 
     /**
@@ -63,7 +97,7 @@ class Plugin
             codeSnippets: $codeSnippets,
         );
 
-        return new Reporter(
+        return new OncePerSiteReporter(
             $config,
             $http ?? new CurlHttpClient,
             new Scrubber(self::scrubKeys()),

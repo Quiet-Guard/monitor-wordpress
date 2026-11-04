@@ -36,7 +36,11 @@ captures nothing and shows an admin notice asking for the missing build step.
 
 == Notes ==
 
-* Capture is additive: WordPress' own error handling still runs.
+* Capture is additive: WordPress' own error handling still runs, and an
+  uncaught exception still ends on WordPress's error page and its recovery mode.
+* A `php-error.php` drop-in replaces WordPress's error page and the hook the
+  plugin reads fatals from: under such a drop-in a fatal is reported only if
+  the drop-in raises no error and does not `exit`.
 * Application log forwarding is not part of this plugin yet; it captures errors,
   exceptions and fatal shutdowns only.
 * The admin screen strings are currently English only. The plugin declares the
@@ -47,6 +51,20 @@ captures nothing and shows an admin notice asking for the missing build step.
   the Packagist source used for Composer-based apps).
 
 == Changelog ==
+
+= 0.8.1 (unreleased) =
+
+* Fixed: an uncaught exception left the visitor a blank page answered HTTP 200,
+  with no WordPress error page and no recovery mode email, because the plugin's
+  handler ended the request itself. Once reported, the exception is now handed
+  back to PHP, which logs it, answers 500 and lets WordPress handle it as it
+  would without the plugin.
+* Fixed: a fatal error (memory exhausted, maximum execution time, a compile
+  error) was read only from `error_get_last()` after WordPress's own fatal
+  handler had run, and anything that handler raised first, even a suppressed
+  warning, replaced it: the report was lost. The plugin now reads it from
+  WordPress's `wp_php_error_args` filter, keeps the shutdown hook as a
+  fallback, and reports a crash that reaches both once.
 
 = 0.8.0 =
 
